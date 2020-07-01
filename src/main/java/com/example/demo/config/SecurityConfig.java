@@ -2,7 +2,6 @@ package com.example.demo.config;
 
 import java.util.Arrays;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,8 +43,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
             http.headers().frameOptions().disable(); //Enable H2-Console
             http.authorizeRequests().antMatchers(PUBLIC_MATCHERS).permitAll();
         }
-
-        
         http.authorizeRequests().antMatchers(HttpMethod.GET, PUBLIC_MATCHERS_GET).permitAll().anyRequest().authenticated();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
