@@ -30,12 +30,23 @@ public class UserLogin implements Serializable{
     @CollectionTable(name = "UserProfile")
     @Enumerated(EnumType.STRING)
     private Set<UserProfile> profiles = new HashSet<UserProfile>();
-
+    
+    public UserLogin() {
+        
+	}
 
     public UserLogin(String username, String password) {
         this.username = username;
         this.password = password;
 	}
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
 	public String getUsername() {
         return username;
@@ -82,6 +93,8 @@ public class UserLogin implements Serializable{
             return false;
         return true;
     }
+
+
 
    
     
