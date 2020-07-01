@@ -1,8 +1,15 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +25,12 @@ public class UserLogin implements Serializable{
     private int id;
     private String username;
     private String password;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "UserProfile")
+    @Enumerated(EnumType.STRING)
+    private Set<UserProfile> profiles = new HashSet<UserProfile>();
+
 
     public UserLogin(String username, String password) {
         this.username = username;
@@ -38,6 +51,14 @@ public class UserLogin implements Serializable{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Set<UserProfile> getProfiles() {
+        return profiles;
+    }
+
+    public void setProfiles(Set<UserProfile> profiles) {
+        this.profiles = profiles;
     }
 
     @Override
@@ -62,6 +83,7 @@ public class UserLogin implements Serializable{
         return true;
     }
 
+   
     
     
 }
