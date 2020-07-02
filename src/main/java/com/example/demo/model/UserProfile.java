@@ -3,7 +3,7 @@ package com.example.demo.model;
 public enum UserProfile {
 
     USER(1,"ROLE_USER"),
-    ADM(2, "ROLE_ADM");
+    ADMIN(2, "ROLE_ADMIN");
 
     private int code;
     private String role;

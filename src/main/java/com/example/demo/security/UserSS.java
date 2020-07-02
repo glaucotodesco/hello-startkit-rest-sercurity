@@ -23,9 +23,9 @@ public class UserSS implements UserDetails {
         this.username = username;
         this.password = password;
         
-        profiles.stream().
-                map( p -> new SimpleGrantedAuthority(p.getRole())).
-                collect(Collectors.toList());
+        this.authorities = profiles.stream().
+                                    map( p -> new SimpleGrantedAuthority(p.getRole())).
+                                    collect(Collectors.toList());
 	}
 
 	@Override
@@ -67,5 +67,12 @@ public class UserSS implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+	public boolean hasRole(UserProfile profile) {
+		return getAuthorities().contains(new SimpleGrantedAuthority(profile.getRole()));
+    }
+    
+
+    
     
 }

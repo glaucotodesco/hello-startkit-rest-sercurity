@@ -26,7 +26,7 @@ public class DBServiceTestProfile {
 
         UserLogin userAdm = new UserLogin("adm", encoder.encode("123"));
         userAdm.getProfiles().add(UserProfile.USER);
-        userAdm.getProfiles().add(UserProfile.ADM);
+        userAdm.getProfiles().add(UserProfile.ADMIN);
 
         repo.saveAll(Arrays.asList(user, userAdm));
 
